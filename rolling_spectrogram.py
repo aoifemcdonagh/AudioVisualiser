@@ -7,8 +7,8 @@ import pyqtgraph as pg
 import pyaudio
 from PyQt5 import QtCore, QtGui
 
-FS = 10000 #Hz
-CHUNKSZ = 512 #samples
+FS = 44100 #Hz
+CHUNKSZ = 128 #samples
 
 class MicrophoneRecorder():
     def __init__(self, signal):
@@ -21,7 +21,7 @@ class MicrophoneRecorder():
                             frames_per_buffer=CHUNKSZ)
 
     def read(self):
-        data = self.stream.read(CHUNKSZ)
+        data = self.stream.read(CHUNKSZ, exception_on_overflow = False)
         y = np.fromstring(data, 'int16')
         self.signal.emit(y)
 
