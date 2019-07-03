@@ -1,0 +1,6 @@
+numpy
+pyqtgraph
+scipy
+PyQt5
+matplotlib
+python_speech_features
