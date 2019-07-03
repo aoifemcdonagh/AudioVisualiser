@@ -1,12 +1,9 @@
-#!/usr/bin/env python
-
 import python_speech_features as psf
 import scipy.io.wavfile as wav
 import matplotlib.pyplot as plt
-import numpy as np
+import sys
 
-
-(rate,sig) = wav.read("piano2.wav")
+(rate,sig) = wav.read(sys.argv[1])
 
 # window_size = int(np.ceil(0.5*rate))
 # overlap = int(np.ceil(0.25*rate))
@@ -30,19 +27,19 @@ for i in range(0, sig.size, overlap):
     mfcc_feat = psf.mfcc(sig[i:i+window_size], rate)
 
     fig = plt.figure()
-    ax1 = fig.add_subplot(311)
+    ax1 = fig.add_subplot(211)
     ax1.imshow(fbank_feat.T, aspect='auto')
     ax1.set_title('Mel-filterbank energy features')
     ax1.set_xlabel('Frames')
     ax1.set_ylabel('Filters')
 
-    ax2 = fig.add_subplot(312)
+    ax2 = fig.add_subplot(212)
     ax2.imshow(mfcc_feat.T, aspect='auto')
     ax2.set_title('MFCC features')
     ax2.set_xlabel('Frames')
     ax2.set_ylabel('Cepstrum Index')
 
-    ax3 = fig.add_subplot(313)
-    ax3.bar(np.arange(0,mfcc_feat.shape[1]), height=mfcc_feat[1])
+    #ax3 = fig.add_subplot(313)
+    #ax3.bar(np.arange(0,mfcc_feat.shape[1]), height=mfcc_feat[1])
     plt.show()
 

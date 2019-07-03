@@ -1,7 +1,3 @@
-# https://gist.github.com/boylea/1a0b5442171f9afbf372
-
-#!/usr/bin/env python
-
 import numpy as np
 import pyqtgraph as pg
 import pyaudio
