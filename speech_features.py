@@ -5,10 +5,8 @@
 
 import numpy as np
 import scipy.io.wavfile as wav
-from PIL.ImageColor import colormap
 from scipy.fftpack import dct
 import matplotlib.pyplot as plt
-import python_speech_features as psf
 
 sample_rate, signal = wav.read('OSR_us_000_0010_8k.wav')  # File assumed to be in the same directory
 signal = signal[0:int(3.5 * sample_rate)]  # Keep the first 3.5 seconds
